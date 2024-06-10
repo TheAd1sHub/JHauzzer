@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="renamerInitialized" value="true" />
+    <option name="updateChangeLogPath" value="" />
+    <option name="updateDbConnectionName" value="abe22d78-48d5-4a84-8406-744d54fd3db8" />
+    <option name="updateLogLevel" value="INFO" />
+  </component>
+</project>

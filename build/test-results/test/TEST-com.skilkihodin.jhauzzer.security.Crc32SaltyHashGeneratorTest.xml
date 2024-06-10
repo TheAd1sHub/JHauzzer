@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.skilkihodin.jhauzzer.security.Crc32SaltyHashGeneratorTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2024-06-10T08:32:41" hostname="LT00029" time="0.203">
+  <properties/>
+  <testcase name="testHashingSalt1Number1()" classname="com.skilkihodin.jhauzzer.security.Crc32SaltyHashGeneratorTest" time="0.203">
+    <failure message="org.opentest4j.AssertionFailedError: expected: &lt;3d878297&gt; but was: &lt;7b6dd261&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;3d878297&gt; but was: &lt;7b6dd261&gt;
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at app//org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at app//org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at app//org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at app//org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at app//com.skilkihodin.jhauzzer.security.Crc32SaltyHashGeneratorTest.testHashingSalt1Number1(Crc32SaltyHashGeneratorTest.java:20)
+	at java.base@21.0.3/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base@21.0.3/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at java.base@21.0.3/java.util.ArrayList.forEach(ArrayList.java:1596)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
