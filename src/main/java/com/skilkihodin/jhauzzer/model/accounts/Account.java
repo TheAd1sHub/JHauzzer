@@ -1,14 +1,21 @@
-package com.skilkihodin.jhauzzer.models.accounts;
+package com.skilkihodin.jhauzzer.model.accounts;
 
 //import org.jetbrains.NotNull;
 import com.skilkihodin.jhauzzer.security.Encryptor;
 import jakarta.persistence.*;
+import lombok.Data;
 
-import java.util.IllegalFormatConversionException;
-
+/*
+{
+    "login": "user",
+    "password": "password",
+    "accountType": "USER"
+}
+ */
 
 @Entity
 @Table(name = "accounts")
+@Data
 public final class Account {
     public enum Type { USER, VIP_USER, WAREHOUSE_ADMIN }
 
@@ -17,7 +24,7 @@ public final class Account {
     private String login;
 
     @Column(name = "password_hash")
-    private String password;
+    private String passwordHash;
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
@@ -28,8 +35,8 @@ public final class Account {
 
         Account result = new Account();
 
-        result.setLogin(loginData.getLogin());
-        result.setPasswordHash(Encryptor.hashPassword(loginData.getPassword()));
+        result.login = loginData.getLogin();
+        result.passwordHash = Encryptor.hashPassword(loginData.getPassword());
 
         Type accountType = null;
         for (Type type : Type.values()) {
@@ -44,29 +51,29 @@ public final class Account {
             throw new IllegalArgumentException("The given account type cannot be found: " + loginData.getAccountType());
         }
 
-        result.setAccountType(accountType);
+        result.accountType = accountType;
 
         return result;
     }
 
-    public String getLogin() {
-        return login;
-    }
-    public String getPasswordHash() {
-        return password;
-    }
-    public Type getAccountType() {
-        return accountType;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-    public void setPasswordHash(String passwordHash) {
-        this.password = passwordHash;
-    }
-    public void setAccountType(Type accountType) {
-        this.accountType = accountType;
-    }
+    //public String getLogin() {
+    //    return login;
+    //}
+    //public String getPasswordHash() {
+    //    return password;
+    //}
+    //public Type getAccountType() {
+    //    return accountType;
+    //}
+//
+    //public void setLogin(String login) {
+    //    this.login = login;
+    //}
+    //public void setPasswordHash(String passwordHash) {
+    //    this.password = passwordHash;
+    //}
+    //public void setAccountType(Type accountType) {
+    //    this.accountType = accountType;
+    //}
 
 }

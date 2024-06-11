@@ -1,4 +1,4 @@
-package com.skilkihodin.jhauzzer.models.warehouses;
+package com.skilkihodin.jhauzzer.model.warehouses;
 
 import jakarta.persistence.*;
 

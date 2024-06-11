@@ -1,4 +1,4 @@
-package com.skilkihodin.jhauzzer.models.accounts;
+package com.skilkihodin.jhauzzer.model.accounts;
 
 public class RawLoginData {
 

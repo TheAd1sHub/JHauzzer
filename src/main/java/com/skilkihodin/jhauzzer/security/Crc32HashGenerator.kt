@@ -17,6 +17,6 @@ class Crc32HashGenerator : HashGenerator() {
             }
         }
 
-        return crc.toString()
+        return crc.toString(16)
     }
 }
