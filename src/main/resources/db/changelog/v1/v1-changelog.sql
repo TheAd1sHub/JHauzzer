@@ -1,9 +1,9 @@
 --liquibase formatted sql
 --changeset ybryak:1-1-create-accounts-table
 CREATE TABLE accounts (
-   login VARCHAR(255) NOT NULL,
+   login VARCHAR(255) NOT NULL DEFAULT "",
    password_hash INT NOT NULL,
-   type VARCHAR(255) NOT NULL,
+   type VARCHAR(255) NOT NULL DEFAULT "USER",
    CONSTRAINT pk_accounts PRIMARY KEY (login)
 );
 --rollback DROP TABLE accounts;

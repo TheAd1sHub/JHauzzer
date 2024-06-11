@@ -1,11 +1,11 @@
 package com.skilkihodin.jhauzzer.security
 
 
-class Crc32HashGenerator {
+class Crc32HashGenerator : HashGenerator() {
 
     private val POLYNOMINAL: UInt = 0x04C11DB7u
 
-    fun getHash(source: String) : Long {
+    override fun getHash(source: String) : String {
         var crc: UInt = UInt.MAX_VALUE
 
         for (char in source.chars()) {
@@ -17,8 +17,6 @@ class Crc32HashGenerator {
             }
         }
 
-
-
-        return crc.toLong()
+        return crc.toString()
     }
 }

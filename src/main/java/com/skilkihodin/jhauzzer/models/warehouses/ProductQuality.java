@@ -1,4 +1,4 @@
-package com.skilkihodin.jhauzzer.data.warehouses;
+package com.skilkihodin.jhauzzer.models.warehouses;
 
 public enum ProductQuality {
     PREMIUM(0),
