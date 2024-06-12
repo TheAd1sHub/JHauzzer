@@ -1,9 +1,12 @@
 package com.skilkihodin.jhauzzer.model.accounts;
 
-//import org.jetbrains.NotNull;
 import com.skilkihodin.jhauzzer.security.Encryptor;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Objects;
 
 /*
 {
@@ -11,11 +14,11 @@ import lombok.Data;
     "password": "password",
     "accountType": "USER"
 }
- */
+*/
 
 @Entity
 @Table(name = "accounts")
-@Data
+@Getter @Setter
 public final class Account {
     public enum Type { USER, VIP_USER, WAREHOUSE_ADMIN }
 
@@ -28,10 +31,10 @@ public final class Account {
 
     @Column(name = "type")
     @Enumerated(EnumType.STRING)
-    private Type accountType;
+    private Type type;
 
 
-    public static Account fromRawLoginData(RawLoginData loginData) {
+    public static Account fromRawLoginData(@NotNull RawLoginData loginData) {
 
         Account result = new Account();
 
@@ -51,29 +54,21 @@ public final class Account {
             throw new IllegalArgumentException("The given account type cannot be found: " + loginData.getAccountType());
         }
 
-        result.accountType = accountType;
+        result.type = accountType;
 
         return result;
     }
 
-    //public String getLogin() {
-    //    return login;
-    //}
-    //public String getPasswordHash() {
-    //    return password;
-    //}
-    //public Type getAccountType() {
-    //    return accountType;
-    //}
-//
-    //public void setLogin(String login) {
-    //    this.login = login;
-    //}
-    //public void setPasswordHash(String passwordHash) {
-    //    this.password = passwordHash;
-    //}
-    //public void setAccountType(Type accountType) {
-    //    this.accountType = accountType;
-    //}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(login, account.login);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(login);
+    }
 }

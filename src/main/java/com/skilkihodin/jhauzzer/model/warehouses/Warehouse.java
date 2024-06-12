@@ -2,9 +2,14 @@ package com.skilkihodin.jhauzzer.model.warehouses;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.Objects;
 
 @Entity
 @Table(name = "warehouses")
+@Getter @Setter
 public final class Warehouse {
 
     @Id
@@ -18,25 +23,20 @@ public final class Warehouse {
     @Column(name = "address")
     private String address;
 
+    @Column(name = "owner")
+    private String ownerLogin;
 
-    public int getId() {
-        return id;
-    }
-    public ProductGroup getProducts() {
-        return products;
-    }
-    public String getAddress() {
-        return address;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-    public void setProducts(ProductGroup products) {
-        this.products = products;
-    }
-    public void setAddress(String address) {
-        this.address = address;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Warehouse warehouse = (Warehouse) o;
+        return id == warehouse.id;
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
 }

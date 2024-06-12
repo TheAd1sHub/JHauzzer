@@ -27,3 +27,7 @@ replay_pid*
 .gradle/8.8/checksums/sha1-checksums.bin
 *.lock
 *.bin
+*.lock
+.gradle/8.8/checksums/checksums.lock
+.gradle/8.8/fileHashes/resourceHashesCache.bin
+*.bin
