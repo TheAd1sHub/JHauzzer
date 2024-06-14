@@ -2,6 +2,7 @@ package com.skilkihodin.jhauzzer.controller.api;
 
 import com.skilkihodin.jhauzzer.controller.repo.ProductsRepo;
 import com.skilkihodin.jhauzzer.model.warehouses.StoredProductEntry;
+import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,8 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/products")
 public final class ProductsApiController {
 
-    @Autowired
-    private ProductsRepo productsRepo;
+    @Autowired private ProductsRepo productsRepo;
 
     @GetMapping("/")
     public String displayTitle() {
@@ -22,6 +22,7 @@ public final class ProductsApiController {
         return productsRepo
                 .findById(id)
                 .orElse(null);
+
     }
 
     @PostMapping("/new")

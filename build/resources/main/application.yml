@@ -5,6 +5,13 @@ spring:
         url: jdbc:mysql://localhost:3306/jhauzzer_data?allowPublicKeyRetrieval=true&useSSL=false
         username: root
         password: password
+    security:
+        basic:
+            enabled: false
+        user:
+            name: admin
+            password: admin
+
     jpa:
         generate-ddl: true
         properties:
@@ -17,3 +24,9 @@ spring:
                 auto: update
     liquibase:
         change-log: classpath:db/changelog/main-changelog.xml
+
+logging:
+    level:
+        org:
+            springframework:
+                security: TRACE

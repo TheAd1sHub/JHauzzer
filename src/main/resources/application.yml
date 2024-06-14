@@ -6,6 +6,8 @@ spring:
         username: root
         password: password
     security:
+        basic:
+            enabled: false
         user:
             name: admin
             password: admin
@@ -22,3 +24,9 @@ spring:
                 auto: update
     liquibase:
         change-log: classpath:db/changelog/main-changelog.xml
+
+logging:
+    level:
+        org:
+            springframework:
+                security: TRACE
