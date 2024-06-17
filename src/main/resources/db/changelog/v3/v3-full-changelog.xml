@@ -4,5 +4,6 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="v3-1-change-accounts-table.sql" relativeToChangelogFile="true"/>
+    <include file="v3-2-change-warehouses-table.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
