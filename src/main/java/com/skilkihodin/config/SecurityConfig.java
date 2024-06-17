@@ -2,8 +2,10 @@ package com.skilkihodin.config;
 
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.ProviderManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
@@ -22,6 +24,8 @@ import static org.springframework.security.config.Customizer.*;
 @EnableWebSecurity
 public class SecurityConfig {
 
+    private ApplicationContext container;
+
     private PasswordEncoder cachedPasswordEncoder;
 
     @Autowired
@@ -36,11 +40,14 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        System.out.println("Security filter chain received");
+
         return http
             .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
                 //.requestMatchers("/", "/api/v1/accounts/new").permitAll()
-                .anyRequest().permitAll()//.authenticated()
+                .requestMatchers("/*").permitAll()
+                //.anyRequest().permitAll()//.authenticated()
             ).formLogin(AbstractAuthenticationFilterConfigurer::permitAll)
             .authenticationManager(new ProviderManager(authenticationProvider()))
             .build();
@@ -56,7 +63,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    public AuthenticationProvider authenticationProvider() {
         var provider = new DaoAuthenticationProvider();
         provider.setUserDetailsService(userDetailsService());
 

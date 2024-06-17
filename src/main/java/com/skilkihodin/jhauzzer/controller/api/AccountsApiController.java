@@ -15,8 +15,8 @@ import java.util.Objects;
 @RequestMapping("/api/v1/accounts")
 public final class AccountsApiController {
 
-    //@Autowired private AccountsRepo accountsRepo;
-    @Autowired private AccountsService accountsService;
+    @Autowired
+    private AccountsService accountsService;
 
     @GetMapping(value = "/")
     @ResponseBody
@@ -25,13 +25,11 @@ public final class AccountsApiController {
     }
 
     @GetMapping(value = "/find")
-    //@PreAuthorize("hasAuthority('USER') || hasAuthority('VIP_USER')")
     public String displayAccountSearch() {
         return "user-search-page.html";
     }
 
     @GetMapping(value = "/find/{login}")
-    //@PreAuthorize("hasAuthority('USER') || hasAuthority('VIP_USER')")
     @ResponseBody
     public Account getAccount(@PathVariable("login") String login) {
 
@@ -41,15 +39,12 @@ public final class AccountsApiController {
     @PostMapping("/new")
     @ResponseBody
     public String addAccount(@RequestBody RawLoginData loginData) {
-        System.out.println(123);
-
         accountsService.addAccount(loginData);
 
         return "Account created successfully.";
     }
 
     @PutMapping("/update-info")
-    //@PreAuthorize("hasAuthority('ADMIN')")
     @ResponseBody
     public String updateAccountData(@RequestBody RawLoginData loginData) {
 
@@ -59,7 +54,6 @@ public final class AccountsApiController {
     }
 
     @DeleteMapping("/remove")
-    //@PreAuthorize("hasAuthority('ADMIN')")
     @ResponseBody
     public String deleteAccount(@RequestBody String login) {
 
