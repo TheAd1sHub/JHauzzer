@@ -7,6 +7,6 @@ public class RawLoginData {
 
     private String login;
     private String password;
-    private String accountType;
+    private String role;
 
 }

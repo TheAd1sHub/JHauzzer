@@ -17,7 +17,7 @@ import java.util.Objects;
 {
     "login": "user",
     "password": "password",
-    "accountType": "USER"
+    "role": "USER"
 }
 */
 
@@ -25,18 +25,21 @@ import java.util.Objects;
 @Table(name = "accounts")
 @Getter @Setter
 public final class Account implements UserDetails {
-    public enum Type { USER, VIP_USER, WAREHOUSE_ADMIN }
+    public enum Type { ADMIN, USER, VIP_USER, WAREHOUSE_ADMIN }
 
     @Id
-    @Column(name = "login", unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String login;
 
     @Column(name = "password_hash")
     private String passwordHash;
 
-    @Column(name = "type")
+    @Column(name = "role")
     @Enumerated(EnumType.STRING)
-    private Type type;
+    private Type role;
 
 
     public static Account fromRawLoginData(@NotNull RawLoginData loginData) {
@@ -48,7 +51,7 @@ public final class Account implements UserDetails {
 
         Type accountType = null;
         for (Type type : Type.values()) {
-            if (type.toString().equals(loginData.getAccountType())) {
+            if (type.toString().equals(loginData.getRole())) {
                 accountType = type;
 
                 break;
@@ -56,10 +59,10 @@ public final class Account implements UserDetails {
         }
 
         if (accountType == null) {
-            throw new IllegalArgumentException("The given account type cannot be found: " + loginData.getAccountType());
+            throw new IllegalArgumentException("The given account type cannot be found: " + loginData.getRole());
         }
 
-        result.type = accountType;
+        result.role = accountType;
 
         return result;
     }
@@ -80,14 +83,14 @@ public final class Account implements UserDetails {
     @Override
     public String toString() {
         return String.format(
-                "{\nlogin: %s\npasswordHash: %s\naccountType: %s\n}",
-                login, passwordHash, type);
+                "{\nlogin: %s\npasswordHash: %s\nrole: %s\n}",
+                login, passwordHash, role.name());
     }
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(type.name()));
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override

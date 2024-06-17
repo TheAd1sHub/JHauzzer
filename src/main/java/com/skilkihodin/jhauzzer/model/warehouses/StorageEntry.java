@@ -7,7 +7,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "stored_products")
 @Getter @Setter
-public final class StoredProductEntry {
+public final class StorageEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

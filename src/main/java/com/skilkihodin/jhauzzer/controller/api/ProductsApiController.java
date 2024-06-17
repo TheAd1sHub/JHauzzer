@@ -1,8 +1,7 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
 import com.skilkihodin.jhauzzer.controller.repo.ProductsRepo;
-import com.skilkihodin.jhauzzer.model.warehouses.StoredProductEntry;
-import com.skilkihodin.jhauzzer.service.AccountsService;
+import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1/products")
 public final class ProductsApiController {
 
-    @Autowired private ProductsRepo productsRepo;
+    @Autowired
+    private ProductsRepo productsRepo;
 
     @GetMapping("/")
     public String displayTitle() {
@@ -18,7 +18,7 @@ public final class ProductsApiController {
     }
 
     @GetMapping("/find/{id}")
-    public StoredProductEntry getProduct(@PathVariable("id") int id) {
+    public StorageEntry getProduct(@PathVariable("id") int id) {
         return productsRepo
                 .findById(id)
                 .orElse(null);
@@ -26,7 +26,7 @@ public final class ProductsApiController {
     }
 
     @PostMapping("/new")
-    public String createProduct(@RequestBody StoredProductEntry productEntryData) {
+    public String createProduct(@RequestBody StorageEntry productEntryData) {
 
         if (productsRepo.existsById(productEntryData.getId())) {
             throw new UnsupportedOperationException("An entry under such ID exists already.");
@@ -38,7 +38,7 @@ public final class ProductsApiController {
     }
 
     @PutMapping("/update-info")
-    public String updateProduct(@RequestBody StoredProductEntry productEntryData) {
+    public String updateProduct(@RequestBody StorageEntry productEntryData) {
 
         if (!productsRepo.existsById(productEntryData.getId())) {
             throw new UnsupportedOperationException("An entry under such ID does not exist.");
