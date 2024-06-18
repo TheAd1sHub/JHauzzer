@@ -5,5 +5,7 @@
 
     <include file="v3-1-change-accounts-table.sql" relativeToChangelogFile="true"/>
     <include file="v3-2-change-warehouses-table.sql" relativeToChangelogFile="true"/>
+    <include file="v3-3-redo-accounts-table-from-scratch.sql" relativeToChangelogFile="true"/>
+    <include file="v3-4-change-accounts-table-auto-increment-id.sql" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

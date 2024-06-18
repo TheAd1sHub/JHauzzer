@@ -1,15 +1,13 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.jhauzzer.controller.repo.AccountsRepo;
 import com.skilkihodin.jhauzzer.model.accounts.RawLoginData;
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Objects;
+import java.util.List;
 
 @Controller
 @RequestMapping("/api/v1/accounts")
@@ -29,36 +27,42 @@ public final class AccountsApiController {
         return "user-search-page.html";
     }
 
-    @GetMapping(value = "/find/{login}")
+    @GetMapping(value = "/get/{id}")
     @ResponseBody
-    public Account getAccount(@PathVariable("login") String login) {
+    public Account getAccount(@PathVariable("id") Long id) {
 
-        return accountsService.getAccount(login);
+        return accountsService.get(id);
     }
 
     @PostMapping("/new")
     @ResponseBody
     public String addAccount(@RequestBody RawLoginData loginData) {
-        accountsService.addAccount(loginData);
+        accountsService.add(loginData);
 
         return "Account created successfully.";
     }
 
-    @PutMapping("/update-info")
+    @PutMapping("/update/{id}")
     @ResponseBody
-    public String updateAccountData(@RequestBody RawLoginData loginData) {
-
-        accountsService.updateAccount(loginData.getLogin(), loginData);
+    public String updateAccountData(@PathVariable Long id, @RequestBody RawLoginData loginData) {
+        accountsService.update(id, loginData);
 
         return "Data updated successfully.";
     }
 
-    @DeleteMapping("/remove")
+    @DeleteMapping("/delete/{id}")
     @ResponseBody
-    public String deleteAccount(@RequestBody String login) {
+    public String deleteAccount(@PathVariable Long id) {
 
-        accountsService.deleteAccount(login);
+        accountsService.delete(id);
 
         return "Account deleted successfully.";
     }
+
+    @GetMapping("/get-all")
+    @ResponseBody
+    public List<Account> getAll() {
+        return accountsService.getAll();
+    }
+
 }

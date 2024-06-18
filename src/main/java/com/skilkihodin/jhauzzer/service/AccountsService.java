@@ -4,13 +4,16 @@ import com.skilkihodin.jhauzzer.controller.repo.AccountsRepo;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
 import com.skilkihodin.jhauzzer.model.accounts.RawLoginData;
 import lombok.AllArgsConstructor;
+import org.aspectj.bridge.MessageWriter;
+import org.jetbrains.annotations.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -19,60 +22,82 @@ import java.util.Optional;
 public class AccountsService implements UserDetailsService {
 
     @Autowired
-    private AccountsRepo accountsRepo;
+    private AccountsRepo repository;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Account> userAccount = accountsRepo.findById(username);
+        Optional<Account> userAccount = repository
+                .findAll()
+                .stream()
+                .filter(acc -> acc.getUsername().equals(username))
+                .findFirst();
+
         return userAccount.orElseThrow(() -> new UsernameNotFoundException(username + " not found"));
     }
 
-    public void addAccount(RawLoginData loginData) {
-        addAccount(Account.fromRawLoginData(loginData));
+    public void add(RawLoginData loginData) {
+        Account newAccount = Account.fromRawLoginData(loginData);
+        newAccount.setId(repository.count() + 1);
+        add(newAccount);
     }
 
-    public void addAccount(Account account) throws UnsupportedOperationException {
-        if (accountsRepo.existsById(account.getLogin())) {
-            throw new UnsupportedOperationException("Account with such login is already registered.");
+    public void add(Account account) throws UnsupportedOperationException {
+        if (repository.existsById(account.getId())) {
+            throw new UnsupportedOperationException("Account under such ID is already registered.");
+        }
+
+        if (repository.getByLogin(account.getLogin()).isPresent()) {
+            throw new UnsupportedOperationException("Account under such login is already registered.");
         }
 
         System.out.println(account);
 
-        accountsRepo.save(account);
+        repository.save(account);
     }
 
-    public void updateAccount(String login, RawLoginData loginData) throws UsernameNotFoundException {
-        updateAccount(login, Account.fromRawLoginData(loginData));
+    @Contract("_,_->sobaka")
+    public void update(Long id, RawLoginData loginData) throws UsernameNotFoundException {
+        if (!repository.existsById(id)) {
+            throw new UsernameNotFoundException(id + " not found");
+        }
+
+        delete(id);
+
+        Account newAccount = Account.fromRawLoginData(loginData);
+        newAccount.setId(id);
+
+        add(newAccount);
     }
 
-    public void updateAccount(String login, Account account) throws UsernameNotFoundException {
-        if (!accountsRepo.existsById(login)) {
-            throw new UsernameNotFoundException(login + " not found");
+    public Account get(Long id) throws UsernameNotFoundException {
+
+        if (!repository.existsById(id)) {
+            throw new UsernameNotFoundException(id + " not found");
         }
 
-        if (!Objects.equals(account.getUsername(), login)) {
-            deleteAccount(login);
-        }
-
-        addAccount(account);
+        return repository.getReferenceById(id);
     }
 
-    public Account getAccount(String login) throws UsernameNotFoundException {
-
-        if (!accountsRepo.existsById(login)) {
-            throw new UsernameNotFoundException(login + " not found");
-        }
-
-        return accountsRepo.getReferenceById(login);
+    public List<Account> getAll() {
+        return repository.findAll();
     }
 
-    public void deleteAccount(String login) throws UsernameNotFoundException {
+    public void delete(Long id) throws UsernameNotFoundException {
 
-        if (!accountsRepo.existsById(login)) {
-            throw new UsernameNotFoundException(login + " not found");
+        if (!repository.existsById(id)) {
+            throw new UsernameNotFoundException(id + " not found");
         }
 
-        accountsRepo.delete(accountsRepo.getReferenceById(login));
+        repository.deleteById(id);
+    }
+
+
+    public String getLoginById(Long id) {
+        return repository.getReferenceById(id).getLogin();
+    }
+
+    public Long getIdByLogin(String login) throws NoSuchElementException {
+        return repository.getByLogin(login).get().getId();
     }
 
 }

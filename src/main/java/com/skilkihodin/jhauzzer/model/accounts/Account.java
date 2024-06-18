@@ -25,7 +25,7 @@ import java.util.Objects;
 @Table(name = "accounts")
 @Getter @Setter
 public final class Account implements UserDetails {
-    public enum Type { ADMIN, USER, VIP_USER, WAREHOUSE_ADMIN }
+    public enum Type { ADMIN, CUSTOMER, VIP_CUSTOMER, WAREHOUSE_ADMIN }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,7 +59,7 @@ public final class Account implements UserDetails {
         }
 
         if (accountType == null) {
-            throw new IllegalArgumentException("The given account type cannot be found: " + loginData.getRole());
+            throw new IllegalArgumentException("The given account role cannot be found: " + loginData.getRole());
         }
 
         result.role = accountType;

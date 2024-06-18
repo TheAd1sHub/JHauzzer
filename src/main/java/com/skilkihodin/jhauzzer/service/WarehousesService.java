@@ -8,20 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class WarehousesService {
+public final class WarehousesService {
 
     @Autowired
-    WarehousesRepo repository;
+    private WarehousesRepo repository;
 
-    public Warehouse get(int id) throws IllegalArgumentException {
-        Warehouse warehouse = repository
-                .findById(id)
-                .orElseThrow(IllegalArgumentException::new);
-
-        return warehouse;
+    public Optional<Warehouse> get(int id) {
+        return repository.findById(id);
     }
 
     public List<Warehouse> getAll() {
@@ -49,7 +46,6 @@ public class WarehousesService {
             throw new IllegalArgumentException("A warehouse under the given ID was not found!");
         }
     }
-
 
     public boolean existsById(int id) {
         return repository.existsById(id);
