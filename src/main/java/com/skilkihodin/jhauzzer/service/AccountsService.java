@@ -2,9 +2,8 @@ package com.skilkihodin.jhauzzer.service;
 
 import com.skilkihodin.jhauzzer.controller.repo.AccountsRepo;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.jhauzzer.model.accounts.RawLoginData;
+import com.skilkihodin.dto.RawLoginData;
 import lombok.AllArgsConstructor;
-import org.aspectj.bridge.MessageWriter;
 import org.jetbrains.annotations.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service

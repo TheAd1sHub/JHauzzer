@@ -1,4 +1,4 @@
-package com.skilkihodin.jhauzzer.model.accounts;
+package com.skilkihodin.dto;
 
 import lombok.Data;
 

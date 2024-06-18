@@ -1,5 +1,6 @@
 package com.skilkihodin.jhauzzer.model.accounts;
 
+import com.skilkihodin.dto.RawLoginData;
 import com.skilkihodin.jhauzzer.security.Encryptor;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -84,7 +85,7 @@ public final class Account implements UserDetails {
     public String toString() {
         return String.format(
                 "{\nlogin: %s\npasswordHash: %s\nrole: %s\n}",
-                login, passwordHash, role.name());
+                login, new String(new char[passwordHash.length()]).intern().replace('\0', '*') , role.name());
     }
 
 

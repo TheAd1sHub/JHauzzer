@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47cd647d-9b99-4334-a472-50f2304bd758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/config/RolesConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ServerDropApiController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/DataNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/DatabaseRecordsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-3-redo-accounts-table-from-scratch.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-4-change-accounts-table-auto-increment-id.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JHauzzer_DTOs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
@@ -20,25 +16,20 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/db/changelog/main-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/db/changelog/main-changelog.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/repo/AccountsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/repo/AccountsRepo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/RawLoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/main-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/main-changelog.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-1-change-accounts-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-1-change-accounts-table.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-full-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-full-changelog.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,11 +104,11 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;refactor/change-mvc-classes-structure&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/yusere/IdeaProjects/spring-security-test&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Facets&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.23793103&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/yusere/IdeaProjects/jhauzzer/src/main/java/com/skilkihodin/jhauzzer/model/accounts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24347825&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
     &quot;kotlin-gradle-user-dirs&quot;: [
@@ -126,6 +117,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\DTOs" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\src\main\resources\templates" />
       <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\src\main\resources\static" />

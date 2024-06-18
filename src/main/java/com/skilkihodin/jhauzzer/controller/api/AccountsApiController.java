@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.jhauzzer.model.accounts.RawLoginData;
+import com.skilkihodin.dto.RawLoginData;
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +34,7 @@ public final class AccountsApiController {
         return accountsService.get(id);
     }
 
-    @PostMapping("/new")
+    @PostMapping("/register")
     @ResponseBody
     public String addAccount(@RequestBody RawLoginData loginData) {
         accountsService.add(loginData);

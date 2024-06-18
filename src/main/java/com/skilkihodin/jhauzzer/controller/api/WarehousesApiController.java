@@ -33,16 +33,16 @@ public final class WarehousesApiController {
 
     //@GetMapping("/find-with")
     //public List<Warehouse> getWarehousesWith() {
-//
+    //
     //    for (Warehouse warehouse : warehousesRepo.findAll()) {
     //        // TODO: Implement selection through iteration
     //        System.out.println(warehouse.hashCode());
     //    }
-//
+    //
     //    return null;
     //}
 
-    @PostMapping("/new")
+    @PostMapping("/register")
     public String createWarehouse(@RequestBody Warehouse warehouseData) {
         service.add(warehouseData);
 

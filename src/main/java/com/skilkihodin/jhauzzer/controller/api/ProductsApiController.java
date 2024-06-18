@@ -1,9 +1,11 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
+import com.skilkihodin.dto.RawStorageEntry;
 import com.skilkihodin.jhauzzer.controller.repo.ProductsRepo;
 import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
 import com.skilkihodin.jhauzzer.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,13 +23,19 @@ public final class ProductsApiController {
     }
 
     @GetMapping("/get/{id}")
-    public StorageEntry getProduct(@PathVariable("id") int id) {
-        return service
-                .get(id)
-                .orElse(null);
+    public RawStorageEntry getProduct(@PathVariable("id") int id) {
+        StorageEntry result = service
+                                .get(id)
+                                .orElse(null);
+
+        if (result == null) {
+            return null;
+        }
+
+        return result.extractRawData();
     }
 
-    @PostMapping("/new")
+    @PostMapping("/register")
     public String createProduct(@RequestBody StorageEntry productEntryData) {
         service.add(productEntryData);
 
@@ -49,7 +57,20 @@ public final class ProductsApiController {
     }
 
     @GetMapping("/get-all")
-    public List<StorageEntry> getAllProducts() {
-        return service.getAll();
+    public List<RawStorageEntry> getAllProducts() {
+        return service.getAll()
+                .stream()
+                .map(StorageEntry::extractRawData)
+                .toList();
+    }
+
+    @GetMapping("/get-like")
+    public List<RawStorageEntry> getBy(@RequestBody RawStorageEntry example) {
+
+            StorageEntry exampleEntry = new StorageEntry();
+            exampleEntry.setPrice(example.getPrice());
+            exampleEntry.setPrice(example.getPrice());
+            exampleEntry.setPrice(example.getPrice());
+
     }
 }
