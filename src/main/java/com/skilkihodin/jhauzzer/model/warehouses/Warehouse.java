@@ -19,7 +19,7 @@ public final class Warehouse {
 
     @Column(name = "products_group")
     @Enumerated(EnumType.STRING)
-    private ProductGroup products;
+    private ProductGroup productsType;
 
     @Column(name = "address")
     private String address;
@@ -31,7 +31,7 @@ public final class Warehouse {
     public RawWarehouseData extractRawData() {
         RawWarehouseData rawData = new RawWarehouseData();
         rawData.setId(id);
-        rawData.setProductsType(products.name());
+        rawData.setProductsType(productsType.name());
         rawData.setAddress(address);
 
         return rawData;

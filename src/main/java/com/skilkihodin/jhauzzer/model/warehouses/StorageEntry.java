@@ -1,19 +1,23 @@
 package com.skilkihodin.jhauzzer.model.warehouses;
 
-import com.skilkihodin.dto.RawStorageEntry;
+import com.skilkihodin.dto.RawStorageEntryAnswer;
+import com.skilkihodin.dto.RawStorageEntryPost;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
+import org.springframework.data.domain.Example;
 
 @Entity
 @Table(name = "stored_products")
 @Getter @Setter
-public final class StorageEntry {
+public final class StorageEntry implements Cloneable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name") // Formerly  product_id: int
     private String name;
@@ -27,46 +31,89 @@ public final class StorageEntry {
     private ProductQuality quality;
 
     @Column(name = "warehouse_id")
-    private int warehouseId;
+    private Integer warehouseId;
 
     @Column(name = "quantity")
-    private int quantity;
+    private Integer quantity;
 
     @Column(name = "price")
-    private float price;
+    private Float price;
 
     @Column(name = "discount_per_cent")
-    private float discount;
+    private Float discount;
 
     @Column(name = "vip_discount_per_cent")
-    private float vipDiscount;
+    private Float vipDiscount;
 
+    public static StorageEntry fromRawStorageEntryPost(RawStorageEntryPost storageEntry) {
+        StorageEntry entry = new StorageEntry();
+        entry.id = storageEntry.getId();
+        entry.name = storageEntry.getName();
+        entry.type = ProductGroup.fromString(storageEntry.getType());
+        entry.quality = ProductQuality.fromString(storageEntry.getQuality());
+        entry.warehouseId = storageEntry.getWarehouseId();
+        entry.quantity = storageEntry.getQuantity();
+        entry.price = storageEntry.getPrice();
+        entry.discount = storageEntry.getDiscount();
+        entry.vipDiscount = storageEntry.getVipDiscount();
 
-    public RawStorageEntry extractRawData() {
-        return extractRawData(Account.Type.CUSTOMER);
+        return entry;
     }
 
-    public RawStorageEntry extractRawData(Account.Type requesterRole) {
+    public static Example<StorageEntry> getExampleSearchEntry(@NotNull RawStorageEntryAnswer storageEntry) {
+        StorageEntry constructedEntry = new StorageEntry();
 
-        RawStorageEntry rawData = new RawStorageEntry();
+        constructedEntry.setName(storageEntry.getName());
+        constructedEntry.setType(ProductGroup.fromString(storageEntry.getType()));
+        constructedEntry.setQuality(ProductQuality.fromString(storageEntry.getQuality()));
+        constructedEntry.setQuantity(storageEntry.getQuantity());
 
+        return Example.of(constructedEntry);
+    }
+
+    public RawStorageEntryAnswer extractAnswerData() {
+        return extractAnswerData(Account.Type.CUSTOMER);
+    }
+
+    public RawStorageEntryAnswer extractAnswerData(@NotNull Account.Type requesterRole) {
+
+        RawStorageEntryAnswer rawData = new RawStorageEntryAnswer();
+
+        rawData.setId(id);
         rawData.setName(name);
         rawData.setType(type.name());
         rawData.setQuality(quality.name());
         rawData.setQuantity(quantity);
 
         float resultingPrice = calculateFinalPrice(requesterRole);
-
         rawData.setPrice(resultingPrice);
 
         return rawData;
     }
 
-    public float calculateFinalPrice(Account.Type requesterRole) {
+    @Contract(pure = true)
+    public float calculateFinalPrice(@NotNull Account.Type requesterRole) {
         return switch (requesterRole) {
-            case CUSTOMER -> price * (1 - discount / 100);
-            case VIP_CUSTOMER -> price * (1 - vipDiscount / 100);
+            case CUSTOMER -> price * (1 - discount/100);
+            case VIP_CUSTOMER -> price * (1 - vipDiscount/100);
             default -> price;
         };
+    }
+
+    @Override
+    public StorageEntry clone() {
+        StorageEntry clone = new StorageEntry();
+
+        clone.id = id;
+        clone.name = name;
+        clone.type = type;
+        clone.quality = quality;
+        clone.warehouseId = warehouseId;
+        clone.quantity = quantity;
+        clone.price = price;
+        clone.discount = discount;
+        clone.vipDiscount = vipDiscount;
+
+        return clone;
     }
 }

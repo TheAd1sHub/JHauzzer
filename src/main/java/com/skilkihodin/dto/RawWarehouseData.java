@@ -3,10 +3,10 @@ package com.skilkihodin.dto;
 import lombok.Data;
 
 @Data
-public class RawWarehouseData {
+public final class RawWarehouseData {
 
-    private int id;
-    private String productsType;
-    private String address;
+    private Integer id;
+    private String  productsType;
+    private String  address;
 
 }

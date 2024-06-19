@@ -1,13 +1,15 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
-import com.skilkihodin.dto.RawStorageEntry;
-import com.skilkihodin.jhauzzer.controller.repo.ProductsRepo;
+import com.skilkihodin.dto.RawStorageEntryAnswer;
+import com.skilkihodin.dto.RawStorageEntryPost;
+import com.skilkihodin.jhauzzer.exceptions.purchase.InsufficientGoodsException;
 import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
 import com.skilkihodin.jhauzzer.service.ProductsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,7 +25,7 @@ public final class ProductsApiController {
     }
 
     @GetMapping("/get/{id}")
-    public RawStorageEntry getProduct(@PathVariable("id") int id) {
+    public RawStorageEntryAnswer getProduct(@PathVariable("id") int id) {
         StorageEntry result = service
                                 .get(id)
                                 .orElse(null);
@@ -32,19 +34,41 @@ public final class ProductsApiController {
             return null;
         }
 
-        return result.extractRawData();
+        return result.extractAnswerData();
     }
 
     @PostMapping("/register")
-    public String createProduct(@RequestBody StorageEntry productEntryData) {
-        service.add(productEntryData);
+    public String createProduct(@RequestBody RawStorageEntryPost productEntryData) {
+        service.add(StorageEntry.fromRawStorageEntryPost(productEntryData));
 
         return "Product entry created successfully.";
     }
 
+    @PostMapping("/buy/{id}/{quantity}")
+    public RawStorageEntryAnswer purchase(@PathVariable("id") int id, @PathVariable("quantity") int quantity) {
+
+        try {
+            return service.purchase(id, quantity).extractAnswerData();
+        } catch (InsufficientGoodsException | NullPointerException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    @PostMapping("/replenish/{id}/{quantity}")
+    public String replenishStock(@PathVariable("id") int id, @PathVariable("quantity") int quantity) {
+        if (quantity < 0) {
+            throw new IllegalArgumentException("Cannot add negative amount of items");
+        }
+
+        service.changeProductCountBy(id ,quantity);
+
+        return "Stock increased successfully";
+    }
+
     @PutMapping("/update-info")
-    public String updateProduct(@RequestBody StorageEntry productEntryData) {
-        service.update(productEntryData);
+    public String updateProduct(@RequestBody RawStorageEntryPost productEntryData) {
+        service.update(StorageEntry.fromRawStorageEntryPost(productEntryData));
 
         return "Product entry updated successfully.";
     }
@@ -57,20 +81,19 @@ public final class ProductsApiController {
     }
 
     @GetMapping("/get-all")
-    public List<RawStorageEntry> getAllProducts() {
+    public List<RawStorageEntryAnswer> getAllProducts() {
         return service.getAll()
                 .stream()
-                .map(StorageEntry::extractRawData)
+                .map(StorageEntry::extractAnswerData)
                 .toList();
     }
 
     @GetMapping("/get-like")
-    public List<RawStorageEntry> getBy(@RequestBody RawStorageEntry example) {
+    public List<RawStorageEntryAnswer> getLike(@RequestBody RawStorageEntryPost example) {
 
-            StorageEntry exampleEntry = new StorageEntry();
-            exampleEntry.setPrice(example.getPrice());
-            exampleEntry.setPrice(example.getPrice());
-            exampleEntry.setPrice(example.getPrice());
-
+        return service.getLike(Example.of(StorageEntry.fromRawStorageEntryPost(example)))
+                .stream()
+                .map(StorageEntry::extractAnswerData)
+                .toList();
     }
 }

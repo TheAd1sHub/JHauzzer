@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class AccountsService implements UserDetailsService {
+public final class AccountsService implements UserDetailsService {
 
     @Autowired
     private AccountsRepo repository;
@@ -53,6 +53,7 @@ public class AccountsService implements UserDetailsService {
         repository.save(account);
     }
 
+    @SuppressWarnings("all")
     @Contract("_,_->sobaka")
     public void update(Long id, RawLoginData loginData) throws UsernameNotFoundException {
         if (!repository.existsById(id)) {

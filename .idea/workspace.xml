@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47cd647d-9b99-4334-a472-50f2304bd758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/JHauzzer_DTOs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntry.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntryPost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientFundsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientGoodsException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/PurchaseException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/TransactionFailedException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
@@ -16,20 +18,23 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/caches-jvm/jvm/kotlin/proto.tab.values.at" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntryAnswer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/RawLoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

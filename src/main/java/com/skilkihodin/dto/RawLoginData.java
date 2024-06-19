@@ -3,7 +3,7 @@ package com.skilkihodin.dto;
 import lombok.Data;
 
 @Data
-public class RawLoginData {
+public final class RawLoginData {
 
     private String login;
     private String password;
