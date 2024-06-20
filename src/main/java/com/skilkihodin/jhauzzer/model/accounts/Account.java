@@ -85,7 +85,10 @@ public final class Account implements UserDetails {
     public String toString() {
         return String.format(
                 "{\nlogin: %s\npasswordHash: %s\nrole: %s\n}",
-                login, new String(new char[passwordHash.length()]).intern().replace('\0', '*') , role.name());
+                login,
+                new String(new char[passwordHash.length()]).intern().replace('\0', '*'),
+                role.name()
+        );
     }
 
 

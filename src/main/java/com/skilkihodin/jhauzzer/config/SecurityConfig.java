@@ -21,8 +21,8 @@ import java.util.function.Consumer;
 
 import static org.springframework.security.config.Customizer.*;
 
-@Configuration
-@EnableWebSecurity
+//@Configuration
+//@EnableWebSecurity
 public class SecurityConfig {
 
     private ApplicationContext container;

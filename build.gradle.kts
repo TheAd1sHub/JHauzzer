@@ -19,17 +19,33 @@ repositories {
 }
 
 dependencies {
+	// External libs
+	implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
+
+	// Databases
+	implementation("com.mysql:mysql-connector-j:8.3.0")
+	implementation("org.liquibase:liquibase-core")
+
+	// Spring boot starter
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.3.0")
 	implementation("org.springframework.boot:spring-boot-starter-security")
-	implementation("com.mysql:mysql-connector-j:8.3.0")
-	implementation("org.liquibase:liquibase-core")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	// Testing
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	implementation(kotlin("stdlib-jdk8"))
+
+	implementation("io.projectreactor.ipc:reactor-netty:0.7.15.RELEASE")
+
 	compileOnly("org.projectlombok:lombok:1.18.30")
+
+	implementation("org.springframework.boot:spring-boot-starter-webflux:3.3.0")
+	implementation("org.modelmapper:modelmapper:3.2.0")
+
+	// Lombok
 	annotationProcessor("org.projectlombok:lombok:1.18.30")
 	implementation("org.projectlombok:lombok:1.18.30")
 
