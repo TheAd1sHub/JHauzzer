@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.dto.RawLoginData;
+import com.skilkihodin.jhauzzer.dto.RawLoginData;
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

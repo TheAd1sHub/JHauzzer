@@ -1,4 +1,4 @@
-package com.skilkihodin.config;
+package com.skilkihodin.jhauzzer.config;
 
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;

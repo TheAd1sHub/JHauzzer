@@ -2,7 +2,7 @@ package com.skilkihodin.jhauzzer.service;
 
 import com.skilkihodin.jhauzzer.controller.repo.AccountsRepo;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.dto.RawLoginData;
+import com.skilkihodin.jhauzzer.dto.RawLoginData;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.Contract;
 import org.springframework.beans.factory.annotation.Autowired;

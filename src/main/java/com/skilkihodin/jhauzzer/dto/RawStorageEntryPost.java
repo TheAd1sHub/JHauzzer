@@ -1,6 +1,8 @@
-package com.skilkihodin.dto;
+package com.skilkihodin.jhauzzer.dto;
 
 import lombok.Data;
+
+import java.sql.Date;
 
 /**
  * Form factor to store data sent in a request to API
@@ -17,5 +19,7 @@ public final class RawStorageEntryPost {
     private Float   price;
     private Float   discount;     //  %
     private Float   vipDiscount;  //  %
+    private Date    productionDate;
+    private Integer lifetimeDays;
 
 }

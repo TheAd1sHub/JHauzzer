@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.model.warehouses;
 
-import com.skilkihodin.dto.RawStorageEntryAnswer;
-import com.skilkihodin.dto.RawStorageEntryPost;
+import com.skilkihodin.jhauzzer.dto.RawStorageEntryAnswer;
+import com.skilkihodin.jhauzzer.dto.RawStorageEntryPost;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,6 +9,8 @@ import lombok.Setter;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.data.domain.Example;
+
+import java.sql.Date;
 
 @Entity
 @Table(name = "stored_products")
@@ -45,6 +47,13 @@ public final class StorageEntry implements Cloneable {
     @Column(name = "vip_discount_per_cent")
     private Float vipDiscount;
 
+    @Column(name = "production_date")
+    private Date productionDate;
+
+    @Column(name = "lifetime_days")
+    private Integer lifetimeDays;
+
+
     public static StorageEntry fromRawStorageEntryPost(RawStorageEntryPost storageEntry) {
         StorageEntry entry = new StorageEntry();
         entry.id = storageEntry.getId();
@@ -56,6 +65,8 @@ public final class StorageEntry implements Cloneable {
         entry.price = storageEntry.getPrice();
         entry.discount = storageEntry.getDiscount();
         entry.vipDiscount = storageEntry.getVipDiscount();
+        entry.productionDate = storageEntry.getProductionDate();
+        entry.lifetimeDays = storageEntry.getLifetimeDays();
 
         return entry;
     }
@@ -84,6 +95,8 @@ public final class StorageEntry implements Cloneable {
         rawData.setType(type.name());
         rawData.setQuality(quality.name());
         rawData.setQuantity(quantity);
+        rawData.setProductionDate(productionDate);
+        rawData.setLifetimeDays(lifetimeDays);
 
         float resultingPrice = calculateFinalPrice(requesterRole);
         rawData.setPrice(resultingPrice);
@@ -101,6 +114,7 @@ public final class StorageEntry implements Cloneable {
     }
 
     @Override
+    @SuppressWarnings("all")
     public StorageEntry clone() {
         StorageEntry clone = new StorageEntry();
 

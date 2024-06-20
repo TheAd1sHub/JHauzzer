@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.controller.api;
 
-import com.skilkihodin.dto.RawStorageEntryAnswer;
-import com.skilkihodin.dto.RawStorageEntryPost;
+import com.skilkihodin.jhauzzer.dto.RawStorageEntryAnswer;
+import com.skilkihodin.jhauzzer.dto.RawStorageEntryPost;
 import com.skilkihodin.jhauzzer.exceptions.purchase.InsufficientGoodsException;
 import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
 import com.skilkihodin.jhauzzer.service.ProductsService;
@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 @RestController

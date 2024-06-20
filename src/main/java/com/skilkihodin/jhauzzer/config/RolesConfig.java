@@ -1,4 +1,4 @@
-package com.skilkihodin.config;
+package com.skilkihodin.jhauzzer.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.hierarchicalroles.RoleHierarchy;
