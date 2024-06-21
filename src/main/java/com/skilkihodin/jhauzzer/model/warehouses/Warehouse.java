@@ -24,8 +24,8 @@ public final class Warehouse {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "owner")
-    private String ownerLogin;
+    @Column(name = "owner_id")
+    private Integer ownerLogin;
 
 
     public RawWarehouseData extractRawData() {
