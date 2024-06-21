@@ -7,14 +7,12 @@ public final class RestaurantProductPrinter implements Printer<ProductDTO> {
 
     @Override
     public void print(ProductDTO product) {
-        System.out.println(
-                String.format(
-                        "Product: %s\nPrice: %f Eur\n%f units in stock at Restaurant #%d",
-                        product.productName(),
-                        product.productPrice(),
-                        product.productBalance(),
-                        product.restaurant()
-                )
+        System.out.printf(
+                "Product: %s\nPrice: %.2f Eur\n%.2f units in stock at Restaurant #%d%n",
+                product.productName(),
+                product.productPrice(),
+                product.productBalance(),
+                product.restaurant()
         );
     }
 }

@@ -10,16 +10,16 @@ import java.sql.Date;
 @Data
 public final class RawStorageEntryPost {
 
-    private Integer id;
-    private String  name;
-    private String  type;
-    private String  quality;
-    private Integer warehouseId;
-    private Integer quantity;
-    private Float   price;
-    private Float   discount;     //  %
-    private Float   vipDiscount;  //  %
-    private Date    productionDate;
-    private Integer lifetimeDays;
+    private Integer id              = null;
+    private String  name            = null;
+    private String  type            = null;
+    private String  quality         = null;
+    private Integer warehouseId     = null;
+    private Integer quantity        = null;
+    private Float   price           = null;
+    private Float   discount        = null;  //  %
+    private Float   vipDiscount     = null;  //  %
+    private Date    productionDate  = null;
+    private Integer lifetimeDays    = null;
 
 }
