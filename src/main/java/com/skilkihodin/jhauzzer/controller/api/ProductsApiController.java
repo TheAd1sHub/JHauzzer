@@ -90,9 +90,14 @@ public final class ProductsApiController {
     @GetMapping("/get-like")
     public List<RawStorageEntryAnswer> getLike(@RequestBody RawStorageEntryPost example) {
 
-        return service.getLike(Example.of(StorageEntry.fromRawStorageEntryPost(example)))
+        return service.getLike(StorageEntry.fromRawStorageEntryPost(example))
                 .stream()
                 .map(StorageEntry::extractAnswerData)
                 .toList();
+
+        //return service.getLike(Example.of(StorageEntry.fromRawStorageEntryPost(example)))
+        //        .stream()
+        //        .map(StorageEntry::extractAnswerData)
+        //        .toList();
     }
 }

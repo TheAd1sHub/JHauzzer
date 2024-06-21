@@ -3,10 +3,13 @@ package com.skilkihodin.jhauzzer.service;
 import com.skilkihodin.jhauzzer.controller.repo.ProductsRepo;
 import com.skilkihodin.jhauzzer.exceptions.DataNotFoundException;
 import com.skilkihodin.jhauzzer.exceptions.purchase.InsufficientGoodsException;
+import com.skilkihodin.jhauzzer.model.warehouses.ProductGroup;
+import com.skilkihodin.jhauzzer.model.warehouses.ProductQuality;
 import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
 import com.skilkihodin.jhauzzer.model.warehouses.Warehouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -102,7 +105,45 @@ public final class ProductsService {
     }
 
     public List<StorageEntry> getLike(Example<StorageEntry> sample) {
+        //return repository.findAll();
+
+        ExampleMatcher matcher = ExampleMatcher.matching()
+                .withIgnoreNullValues()
+                .withIgnoreCase();
+
         return repository.findAll(sample);
+    }
+
+    public List<StorageEntry> getLike(StorageEntry sample) {
+        return repository.findAll()
+                .stream()
+                .filter(entry -> sample.getId() == null
+                        || sample.getId().equals(entry.getId()))
+                .filter(entry -> sample.getName() == null
+                        || entry.getName().toUpperCase().contains(sample.getName().toUpperCase()))
+                .filter(entry -> sample.getType() == null
+                        || sample.getType() == ProductGroup.NONE
+                        || sample.getType() == entry.getType())
+                .filter(entry -> sample.getQuality() == null
+                        || sample.getQuality() == ProductQuality.NONE
+                        || sample.getQuality() == entry.getQuality())
+                .filter(entry -> sample.getWarehouseId() == null
+                        || sample.getWarehouseId().equals(entry.getWarehouseId()))
+                .filter(entry -> sample.getQuantity() == null
+                        || sample.getQuantity() <= entry.getQuantity())
+                .filter(entry -> sample.getPrice() == null
+                        || sample.getPrice() >= entry.getPrice())
+                .filter(entry -> sample.getDiscount() == null
+                        || sample.getDiscount() <= entry.getDiscount())
+                .filter(entry -> sample.getVipDiscount() == null
+                        || sample.getVipDiscount() <= entry.getVipDiscount())
+                .filter(entry -> sample.getProductionDate() == null
+                        || sample.getProductionDate().equals(entry.getProductionDate())
+                        || sample.getProductionDate().before(entry.getProductionDate()))
+                .filter(entry -> sample.getLifetimeDays() == null
+                        || sample.getLifetimeDays() <= entry.getLifetimeDays())
+                .toList();
+
     }
 
     public boolean areCompatible(StorageEntry entry, Warehouse warehouse) {
