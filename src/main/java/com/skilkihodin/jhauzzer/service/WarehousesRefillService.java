@@ -1,6 +1,7 @@
 package com.skilkihodin.jhauzzer.service;
 
 import com.skilkihodin.jhauzzer.model.warehouses.StorageEntry;
+import org.intellij.lang.annotations.MagicConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -9,10 +10,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 
 @Service
-public class WarehousesRefillService {
+public final class WarehousesRefillService {
 
     @Autowired
     private ProductsService productsService;
+
+    @MagicConstant
     private final int DEFAULT_REFILL_AMOUNT = 100;
 
     @Scheduled(cron = "0 */1 * * * *") // Every hour
@@ -29,6 +32,7 @@ public class WarehousesRefillService {
         orderMore(itemId, DEFAULT_REFILL_AMOUNT);
     }
 
+    @SuppressWarnings("OptionalGetWithoutIsPresent")
     public void orderMore(int itemId, int orderAmount) {
         StorageEntry item = productsService.get(itemId).get();
 

@@ -9,7 +9,8 @@ public enum ProductGroup {
     DAIRY(2),
     MEAT(3),
     FISH(4),
-    SPICES(5);
+    SPICES(5),
+    LIQUID(6);
 
     public final int ID;
 

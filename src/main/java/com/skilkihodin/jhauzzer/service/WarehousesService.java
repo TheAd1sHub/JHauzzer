@@ -3,6 +3,9 @@ package com.skilkihodin.jhauzzer.service;
 import com.skilkihodin.jhauzzer.controller.repo.WarehousesRepo;
 import com.skilkihodin.jhauzzer.model.warehouses.Warehouse;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +14,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public final class WarehousesService {
+
+    private final float obligatorySalesPercent = 0f;
 
     @Autowired
     private WarehousesRepo repository;

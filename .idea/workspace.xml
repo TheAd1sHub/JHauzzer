@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47cd647d-9b99-4334-a472-50f2304bd758" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntryPost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientFundsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientGoodsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/PurchaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/TransactionFailedException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-7-change-stored-products-table-update-type-column.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/fileHashes/fileHashes.bin" afterDir="false" />
@@ -25,16 +20,10 @@
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/cacheable/last-build.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/kotlin/compileKotlin/local-state/build-history.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawLoginData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawStorageEntryAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/dto/RawWarehouseData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesRefillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesRefillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-full-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-full-changelog.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +76,9 @@
   <component name="JpbToolWindowState">
     <option name="isToolWindowVisible" value="false" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -107,7 +99,7 @@
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;refactor/change-mvc-classes-structure&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/yusere/IdeaProjects/jhauzzer/src/main/java/com/skilkihodin/jhauzzer/model/accounts&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
@@ -244,6 +236,17 @@
       <updated>1717747852076</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
