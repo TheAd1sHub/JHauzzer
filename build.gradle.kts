@@ -31,7 +31,14 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.3.0")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+
+	// implementation("org.springframework.boot:spring-boot-starter-security") // THE ONES BELOW ARE USED INSTEAD
+	implementation("org.springframework.security:spring-security-core:6.3.0")
+	implementation("org.springframework.security:spring-security-config:6.3.0")
+	implementation("org.springframework.security:spring-security-web:6.3.0")
+
+
+
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
 	// Testing

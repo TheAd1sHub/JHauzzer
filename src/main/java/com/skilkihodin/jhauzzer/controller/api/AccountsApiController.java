@@ -4,12 +4,13 @@ import com.skilkihodin.jhauzzer.model.accounts.Account;
 import com.skilkihodin.jhauzzer.dto.RawLoginData;
 import com.skilkihodin.jhauzzer.service.AccountsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/api/v1/accounts")
 public final class AccountsApiController {
 
@@ -17,25 +18,23 @@ public final class AccountsApiController {
     private AccountsService accountsService;
 
     @GetMapping(value = "/")
-    @ResponseBody
     public String getPage() {
         return "Main accounts page.\nTry to specify your request with sub-address.";
     }
 
-    @GetMapping(value = "/find")
-    public String displayAccountSearch() {
-        return "user-search-page.html";
-    }
+    // @GetMapping(value = "/find")
+    // public String displayAccountSearch() {
+    //     return "user-search-page.html";
+    // }
 
     @GetMapping(value = "/get/{id}")
-    @ResponseBody
     public Account getAccount(@PathVariable("id") Long id) {
 
         return accountsService.get(id);
     }
 
     @PostMapping("/register")
-    @ResponseBody
+    @PreAuthorize("hasRole('ROLE_UNAUTHENTICATED')")
     public String addAccount(@RequestBody RawLoginData loginData) {
         accountsService.add(loginData);
 
@@ -43,7 +42,6 @@ public final class AccountsApiController {
     }
 
     @PutMapping("/update/{id}")
-    @ResponseBody
     public String updateAccountData(@PathVariable Long id, @RequestBody RawLoginData loginData) {
         accountsService.update(id, loginData);
 
@@ -51,7 +49,6 @@ public final class AccountsApiController {
     }
 
     @DeleteMapping("/delete/{id}")
-    @ResponseBody
     public String deleteAccount(@PathVariable Long id) {
 
         accountsService.delete(id);
@@ -60,7 +57,7 @@ public final class AccountsApiController {
     }
 
     @GetMapping("/get-all")
-    @ResponseBody
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Account> getAll() {
         return accountsService.getAll();
     }
