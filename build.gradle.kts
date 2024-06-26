@@ -1,4 +1,4 @@
-import org.gradle.internal.impldep.org.eclipse.jgit.storage.file.FileRepositoryBuilder
+//import org.gradle.internal.impldep.org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -8,11 +8,12 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.3.0"
 	id("io.spring.dependency-management") version "1.1.5"
+	//id("org.ajoberstar.grgit") version "4.1.1"
 	kotlin("jvm")
 }
 
 group = "com.skilkihodin"
-version = "0.0.1-SNAPSHOT"
+version = "1.33.7-LUNA"
 
 
 java {
@@ -31,12 +32,12 @@ fun generateBuildName() : String {
 
 	val hashCharsAmount = 4
 	val gitDir = File("./.git")
-	val gitHashPart: String = FileRepositoryBuilder()
-		.setGitDir(gitDir)
-		.build()
-		.resolve("HEAD")
-		.name()
-		.substring(0, hashCharsAmount-1)
+	val gitHashPart: String = "" // = FileRepositoryBuilder()
+	//	.setGitDir(gitDir)
+	//	.build()
+	//	.resolve("HEAD")
+	//	.name()
+	//	.substring(0, hashCharsAmount-1)
 
 
 
@@ -95,7 +96,7 @@ dependencies {
 	// Внешняя и на сам проект. Несколько сборок при билде: само приложение + либа для API-юзеров
 
 	//JGit
-	implementation("org.eclipse.jgit:org.eclipse.jgit:6.8.0.202311291450-r")
+	// implementation("org.eclipse.jgit:org.eclipse.jgit:6.8.0.202311291450-r")
 
 }
 
