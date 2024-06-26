@@ -1,4 +1,3 @@
-//import org.gradle.internal.impldep.org.eclipse.jgit.storage.file.FileRepositoryBuilder
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -26,35 +25,8 @@ repositories {
 	mavenCentral()
 }
 
-fun generateBuildName() : String {
-	val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss")
-	val buildDate: String = LocalDateTime.now().format(dateTimeFormatter)
-
-	val hashCharsAmount = 4
-	val gitDir = File("./.git")
-	val gitHashPart: String = "" // = FileRepositoryBuilder()
-	//	.setGitDir(gitDir)
-	//	.build()
-	//	.resolve("HEAD")
-	//	.name()
-	//	.substring(0, hashCharsAmount-1)
-
-
-
-		// Runtime.getRuntime()
-		//.exec(arrayOf("git log -1 --format=\"%<(${hashCharsAmount + 2},trunc)%H\""))
-		//.inputReader()
-		//.readLine()
-
-
-	val buildData: String = "$version-$buildDate $gitHashPart"
-
-	return buildData
-}
 
 dependencies {
-	println(generateBuildName())
-
 	// External libs
 	implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
 
@@ -72,8 +44,6 @@ dependencies {
 	implementation("org.springframework.security:spring-security-core:6.3.0")
 	implementation("org.springframework.security:spring-security-config:6.3.0")
 	implementation("org.springframework.security:spring-security-web:6.3.0")
-
-
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 
@@ -95,7 +65,7 @@ dependencies {
 	// При сборке отмечать дату Мажорная, минорная версия и доп. инфа, связанная с датой сборки (ДД-ММ-ГГ, ЧЧ-ММ, первые четыре символа из хэша коммита
 	// Внешняя и на сам проект. Несколько сборок при билде: само приложение + либа для API-юзеров
 
-	//JGit
+	// JGit - DO NOT USE! Crashes Gradle
 	// implementation("org.eclipse.jgit:org.eclipse.jgit:6.8.0.202311291450-r")
 
 }
@@ -104,6 +74,25 @@ tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
-// tasks.register("generateBuildData")
-//
 
+// BUILD NAME GENERATION
+
+val hashCharsAmount = 4
+fun generateBuildName() : String {
+	val dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyHHmmss")
+	val buildDate: String = LocalDateTime.now().format(dateTimeFormatter)
+
+	val gitHashPart: String = Runtime.getRuntime()
+		.exec("git log -1 --format=\"%<(${hashCharsAmount + 2},trunc)%H\"".split(' ').toTypedArray())
+		.inputReader()
+		.readLine()
+		.substring(0, hashCharsAmount)
+
+	val buildData: String = "$version-$buildDate$gitHashPart"
+
+	return buildData
+}
+
+
+val buildName: String = generateBuildName()
+val dtosBuildName: String = "$buildName-DTO"
