@@ -1,3 +1,9 @@
+import org.gradle.internal.impldep.org.eclipse.jgit.storage.file.FileRepositoryBuilder
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+//import org.gradle.internal.impldep.org.joda.time.format.DateTimeFormatter
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.3.0"
@@ -7,6 +13,7 @@ plugins {
 
 group = "com.skilkihodin"
 version = "0.0.1-SNAPSHOT"
+
 
 java {
 	toolchain {
@@ -18,7 +25,35 @@ repositories {
 	mavenCentral()
 }
 
+fun generateBuildName() : String {
+	val dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yy HH:mm:ss")
+	val buildDate: String = LocalDateTime.now().format(dateTimeFormatter)
+
+	val hashCharsAmount = 4
+	val gitDir = File("./.git")
+	val gitHashPart: String = FileRepositoryBuilder()
+		.setGitDir(gitDir)
+		.build()
+		.resolve("HEAD")
+		.name()
+		.substring(0, hashCharsAmount-1)
+
+
+
+		// Runtime.getRuntime()
+		//.exec(arrayOf("git log -1 --format=\"%<(${hashCharsAmount + 2},trunc)%H\""))
+		//.inputReader()
+		//.readLine()
+
+
+	val buildData: String = "$version-$buildDate $gitHashPart"
+
+	return buildData
+}
+
 dependencies {
+	println(generateBuildName())
+
 	// External libs
 	implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
 
@@ -47,17 +82,27 @@ dependencies {
 
 	implementation("io.projectreactor.ipc:reactor-netty:0.7.15.RELEASE")
 
-	compileOnly("org.projectlombok:lombok:1.18.30")
 
 	implementation("org.springframework.boot:spring-boot-starter-webflux:3.3.0")
 	implementation("org.modelmapper:modelmapper:3.2.0")
 
 	// Lombok
+	compileOnly("org.projectlombok:lombok:1.18.30")
 	annotationProcessor("org.projectlombok:lombok:1.18.30")
 	implementation("org.projectlombok:lombok:1.18.30")
+
+	// При сборке отмечать дату Мажорная, минорная версия и доп. инфа, связанная с датой сборки (ДД-ММ-ГГ, ЧЧ-ММ, первые четыре символа из хэша коммита
+	// Внешняя и на сам проект. Несколько сборок при билде: само приложение + либа для API-юзеров
+
+	//JGit
+	implementation("org.eclipse.jgit:org.eclipse.jgit:6.8.0.202311291450-r")
 
 }
 
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+// tasks.register("generateBuildData")
+//
+

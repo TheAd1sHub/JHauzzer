@@ -4,7 +4,7 @@ fun main() {
     val hashGenerator = Crc32HashGenerator()
     val passwordGenerator = PasswordGenerator(8)
 
-    val targetHash: String = hashGenerator.getHash("password") // "fffea000"
+    val targetHash: String = hashGenerator.getHash("password")
     println("Target: $targetHash")
 
     var generatedPassword: String

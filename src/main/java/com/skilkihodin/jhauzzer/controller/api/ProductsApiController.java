@@ -15,8 +15,12 @@ import java.util.List;
 @RequestMapping("api/v1/products")
 public final class ProductsApiController {
 
+    private final ProductsService service;
+
     @Autowired
-    private ProductsService service;
+    public ProductsApiController(ProductsService service) {
+        this.service = service;
+    }
 
     @GetMapping("/")
     public String displayTitle() {

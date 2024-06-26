@@ -14,18 +14,17 @@ import java.util.List;
 @RequestMapping("/api/v1/accounts")
 public final class AccountsApiController {
 
+    private final AccountsService accountsService;
+
     @Autowired
-    private AccountsService accountsService;
+    public AccountsApiController(AccountsService accountsService) {
+        this.accountsService = accountsService;
+    }
 
     @GetMapping(value = "/")
     public String getPage() {
         return "Main accounts page.\nTry to specify your request with sub-address.";
     }
-
-    // @GetMapping(value = "/find")
-    // public String displayAccountSearch() {
-    //     return "user-search-page.html";
-    // }
 
     @GetMapping(value = "/get/{id}")
     public Account getAccount(@PathVariable("id") Long id) {

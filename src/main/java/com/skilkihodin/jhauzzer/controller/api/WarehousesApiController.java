@@ -13,9 +13,12 @@ import java.util.List;
 @RequestMapping("api/v1/warehouses")
 public final class WarehousesApiController {
 
-    //@Autowired private WarehousesRepo warehousesRepo;
+    private final WarehousesService service;
+
     @Autowired
-    private WarehousesService service;
+    public WarehousesApiController(WarehousesService service) {
+        this.service = service;
+    }
 
     @GetMapping("/")
     public String displayTitle() {
@@ -26,9 +29,7 @@ public final class WarehousesApiController {
     public Warehouse getWarehouse(@PathVariable("id") int id) throws DataNotFoundException {
         return service.get(id)
                 .orElseThrow(DataNotFoundException::new);
-        //return warehousesRepo
-        //        .findById(id)
-        //        .orElse(null);
+
     }
 
     //@GetMapping("/find-with")

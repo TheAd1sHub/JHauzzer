@@ -9,8 +9,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/backdoor")
 public final class ServerDropApiController {
 
+    private final ApplicationContext app;
+
     @Autowired
-    private ApplicationContext app;
+    public ServerDropApiController(ApplicationContext app) {
+        this.app = app;
+    }
 
     @PostMapping("/kill-in-{timeoutMs}")
     public String killServer(@PathVariable("timeoutMs") Long timeoutMs) {
