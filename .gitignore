@@ -22,7 +22,6 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
-/build/
 .gradle/8.8/checksums/checksums.lock
 .gradle/8.8/checksums/sha1-checksums.bin
 *.lock
@@ -34,3 +33,7 @@ replay_pid*
 .gradle/8.8/executionHistory/executionHistory.lock
 .gradle/8.8/executionHistory/executionHistory.bin
 /gradle/
+/out/
+/lib/
+/build/
+

@@ -1,18 +1,18 @@
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-//import org.gradle.internal.impldep.org.joda.time.format.DateTimeFormatter
-
 plugins {
 	java
 	id("org.springframework.boot") version "3.3.0"
 	id("io.spring.dependency-management") version "1.1.5"
-	//id("org.ajoberstar.grgit") version "4.1.1"
 	kotlin("jvm")
+	// distribution
+	`java-library-distribution`
 }
 
+
 group = "com.skilkihodin"
-version = "1.33.7-LUNA"
+version = "1.98.4-LUNA"
 
 
 java {
@@ -24,6 +24,22 @@ java {
 repositories {
 	mavenCentral()
 }
+
+
+//sourceSets {
+//	create("dto") {
+//		java {
+//			srcDir("src/main/java/")
+//			include("com/skilkihodin/jhauzzer/dto/**/*.java")
+//		}
+//
+//		tasks.jar {
+//			archiveFileName.set("$buildName-dto.jar")
+//		}
+//	}
+//}
+
+// val dtoSourceSet: SourceSet = sourceSets["dto"]
 
 
 dependencies {
@@ -53,7 +69,6 @@ dependencies {
 
 	implementation("io.projectreactor.ipc:reactor-netty:0.7.15.RELEASE")
 
-
 	implementation("org.springframework.boot:spring-boot-starter-webflux:3.3.0")
 	implementation("org.modelmapper:modelmapper:3.2.0")
 
@@ -68,31 +83,117 @@ dependencies {
 	// JGit - DO NOT USE! Crashes Gradle
 	// implementation("org.eclipse.jgit:org.eclipse.jgit:6.8.0.202311291450-r")
 
+
+
+	// Lombok
+	//add("dtoCompileOnly", "org.projectlombok:lombok:1.18.30")
+	//add("dtoAnnotationProcessor", "org.projectlombok:lombok:1.18.30")
+	//add("dtoImplementation", "org.projectlombok:lombok:1.18.30")
+
+	//"dtoCompile("org.projectlombok:lombok:1.18.30")
+	//"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
+	//"dtoImplementation"("org.projectlombok:lombok:1.18.30")
+
+
+	//implementation(dtoSourceSet.output)
 }
+
+
 
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
 
+tasks.withType<Jar>() {
 
-// BUILD NAME GENERATION
+	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
-val hashCharsAmount = 4
+	manifest {
+		attributes["Main-Class"] = "JHauzzerApplication"
+	}
+
+	configurations["compileClasspath"].forEach { file: File ->
+		from(zipTree(file.absoluteFile))
+	}
+}
+
+//region BUILD FILE NAME GENERATION & ASSIGNMENT
+
+@SuppressWarnings("all")
+val HASH_CHARS_AMOUNT: UInt = 4U
+
 fun generateBuildName() : String {
 	val dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyHHmmss")
 	val buildDate: String = LocalDateTime.now().format(dateTimeFormatter)
 
 	val gitHashPart: String = Runtime.getRuntime()
-		.exec("git log -1 --format=\"%<(${hashCharsAmount + 2},trunc)%H\"".split(' ').toTypedArray())
+		.exec("git log -1 --format=\"%<(${HASH_CHARS_AMOUNT + 2U},trunc)%H\"".split(' ').toTypedArray())
 		.inputReader()
 		.readLine()
-		.substring(0, hashCharsAmount)
+		.substring(0, HASH_CHARS_AMOUNT.toInt())
 
 	val buildData: String = "$version-$buildDate$gitHashPart"
 
 	return buildData
 }
 
-
 val buildName: String = generateBuildName()
-val dtosBuildName: String = "$buildName-DTO"
+val dtosBuildName: String = "$buildName-dto"
+
+
+distributions {
+	main {
+		distributionBaseName = buildName
+		contents {
+			from("src/main/java")
+		}
+
+
+	}
+
+	create("dto") {
+		distributionBaseName = dtosBuildName
+
+		contents {
+			from("src/main/java/com/skilkihodin/jhauzzer/dto")
+		}
+	}
+}
+
+
+
+val mainBuildJar by tasks.creating(Jar::class) {
+	archiveBaseName.set(buildName)
+	archiveFileName = "$buildName.jar"
+	from(sourceSets["main"].output)
+}
+
+val dtoBuildJar by tasks.creating(Jar::class) {
+	archiveBaseName.set(dtosBuildName)
+	archiveFileName = "$dtosBuildName.jar"
+	from(sourceSets["main"].output) {
+		include("com/skilkihodin/jhauzzer/dto/**")
+	}
+}
+
+tasks.build {
+	dependsOn(mainBuildJar, dtoBuildJar)
+}
+
+println(layout.buildDirectory.get().toString())
+mainBuildJar.destinationDirectory.set(file("${layout.buildDirectory}\\libs"))
+dtoBuildJar.destinationDirectory.set(file("${layout.buildDirectory}\\libs"))
+
+//tasks.jar {
+//
+//	archiveFileName.set("$buildName.jar")
+//}
+
+//val makeDtoJar by tasks.creating(Jar::class) {
+//	archiveClassifier.set("dto")
+//	from(sourceSets["dto"].output)
+//	dependsOn(tasks["classes"])  // Ensure main classes are compiled first
+//}
+
+//tasks["assemble"].dependsOn(makeDtoJar)
+//endregion

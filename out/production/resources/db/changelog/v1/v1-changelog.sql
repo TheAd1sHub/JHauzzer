@@ -19,7 +19,7 @@ CREATE TABLE warehouses (
 
 --changeset ybryak:1-3-create-stored-products-table
 CREATE TABLE IF NOT EXISTS stored_products (
-  id INT AUTO_INCREMENT NOT NULL,
+   id INT AUTO_INCREMENT NOT NULL,
    product_id INT NOT NULL,
    product_type VARCHAR(255) NOT NULL,
    warehouse_id INT NOT NULL,

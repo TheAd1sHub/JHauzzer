@@ -17,22 +17,23 @@ fun main() {
         if ((++iterationsCount % 1_000_000u).toInt() == 0) {
             println("$iterationsCount iterations processed")
         }
-    //println("Password: " + generatedPassword + "\tMatches hash: " + (if (matchesTargetHash) "yes" else "no"))
     } while (!matchesTargetHash);
 
-    println(generatedPassword)
+    println("Found: $generatedPassword")
 }
 
 class PasswordGenerator(charactersCount: Int) {
-    private val characters: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    public companion object {
+        private const val CHARACTERS: String = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    }
 
-    private val charactersRange: IntRange = (0..charactersCount);
+    private val charactersRange: IntRange = (0..charactersCount)
 
     public fun generate() : String {
         var password: String  = ""
 
         for (i in charactersRange) {
-            password += characters[characters.indices.random()]
+            password += CHARACTERS.random()//[CHARACTERS.indices.random()]
         }
 
         return password
