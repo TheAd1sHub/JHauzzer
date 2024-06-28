@@ -1,3 +1,5 @@
+import org.gradle.api.internal.file.copy.CopySpecInternal
+import java.nio.file.Files
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -117,20 +119,19 @@ tasks.withType<Jar>() {
 	}
 }
 
-//region BUILD FILE NAME GENERATION & ASSIGNMENT
+//#region BUILD FILE NAME GENERATION & ASSIGNMENT
 
-@SuppressWarnings("all")
-val HASH_CHARS_AMOUNT: UInt = 4U
+val hashCharsAmount: UInt = 4U
 
 fun generateBuildName() : String {
 	val dateTimeFormatter = DateTimeFormatter.ofPattern("ddMMyyHHmmss")
 	val buildDate: String = LocalDateTime.now().format(dateTimeFormatter)
 
 	val gitHashPart: String = Runtime.getRuntime()
-		.exec("git log -1 --format=\"%<(${HASH_CHARS_AMOUNT + 2U},trunc)%H\"".split(' ').toTypedArray())
+		.exec("git log -1 --format=\"%<(${hashCharsAmount + 2U},trunc)%H\"".split(' ').toTypedArray())
 		.inputReader()
 		.readLine()
-		.substring(0, HASH_CHARS_AMOUNT.toInt())
+		.substring(0, hashCharsAmount.toInt())
 
 	val buildData: String = "$version-$buildDate$gitHashPart"
 
@@ -141,48 +142,75 @@ val buildName: String = generateBuildName()
 val dtosBuildName: String = "$buildName-dto"
 
 
-distributions {
-	main {
-		distributionBaseName = buildName
-		contents {
-			from("src/main/java")
-		}
+//distributions {
+//	main {
+//		distributionBaseName = buildName
+//		contents {
+//			from("src/main/java")
+//		}
+//
+//	}
+//
+//	create("dto") {
+//		distributionBaseName = dtosBuildName
+//
+//		contents {
+//			from("src/main/java/com/skilkihodin/jhauzzer/dto")
+//		}
+//	}
+//}
 
 
-	}
-
-	create("dto") {
-		distributionBaseName = dtosBuildName
-
-		contents {
-			from("src/main/java/com/skilkihodin/jhauzzer/dto")
-		}
-	}
-}
-
-
-
-val mainBuildJar by tasks.creating(Jar::class) {
+val mainBuildJar: Jar by tasks.creating(Jar::class) {
 	archiveBaseName.set(buildName)
-	archiveFileName = "$buildName.jar"
+	archiveFileName.set("$buildName.jar")
 	from(sourceSets["main"].output)
+
+	doNotTrackState("Cuz I said so")
 }
 
-val dtoBuildJar by tasks.creating(Jar::class) {
+val dtoBuildJar: Jar by tasks.creating(Jar::class) {
 	archiveBaseName.set(dtosBuildName)
-	archiveFileName = "$dtosBuildName.jar"
-	from(sourceSets["main"].output) {
-		include("com/skilkihodin/jhauzzer/dto/**")
+	archiveFileName.set("$dtosBuildName.jar")
+
+	val dtoClasses: CopySpec = copySpec {
+		from(sourceSets["main"].output) {
+			include("com/skilkihodin/jhauzzer/dto/**/*.class")
+		}
 	}
+	//from({
+	//	sourceSets["main"].output.classesDirs.asFileTree.matching {
+	//		include("com/skilkihodin/jhauzzer/dto/**/*.class")
+	//	}
+	//})
+
+	for (f in Files.walk(fileTree(dtoClasses as CopySpecInternal))) {
+		println(f.path)
+	}
+
+	//from(fileTree(dtoClasses as CopySpecInternal).matching {
+	//	include("**/*.class")
+	//})
+	with(dtoClasses)
+
+
+
+	doNotTrackState("Cuz I said so")
+	dependsOn(tasks["compileJava"])
+	dependsOn(tasks["compileKotlin"])
+	dependsOn(tasks["processResources"])
 }
 
-tasks.build {
+tasks.assemble {
 	dependsOn(mainBuildJar, dtoBuildJar)
 }
 
-println(layout.buildDirectory.get().toString())
-mainBuildJar.destinationDirectory.set(file("${layout.buildDirectory}\\libs"))
-dtoBuildJar.destinationDirectory.set(file("${layout.buildDirectory}\\libs"))
+
+
+
+val buildDirectory = "${layout.buildDirectory.get()}\\libs"
+mainBuildJar.destinationDirectory.set(file(buildDirectory))
+dtoBuildJar.destinationDirectory.set(file(buildDirectory))
 
 //tasks.jar {
 //
@@ -196,4 +224,4 @@ dtoBuildJar.destinationDirectory.set(file("${layout.buildDirectory}\\libs"))
 //}
 
 //tasks["assemble"].dependsOn(makeDtoJar)
-//endregion
+//#endregion
