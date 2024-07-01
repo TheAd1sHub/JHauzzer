@@ -1,10 +1,7 @@
 module main {
-    requires ski
     requires spring.beans;
     requires spring.security.core;
-    requires spring.beans;
     requires spring.web;
-    requires main;
     requires api;
     requires spring.context;
     requires spring.boot;

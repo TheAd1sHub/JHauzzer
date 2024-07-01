@@ -5,41 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce6c319e-ef72-4883-bafc-20a6dec18739" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/JHauzzer_DTOs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/jhauzzer_main_jar.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d273fc8-6b3a-431e-aadb-7a11f03ef49d.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/2d273fc8-6b3a-431e-aadb-7a11f03ef49d/storage_v2/_src_/schema/jhauzzer_data.ChdYww.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jhauzzer.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy-datasource.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa-buddy.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpa.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/io_quarkiverse_jgit_quarkus.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/newDTOs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/dto/RawLoginData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/skilkihodin/jhauzzer/api/RawLoginData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/dto/RawStorageEntryAnswer.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/skilkihodin/jhauzzer/api/RawStorageEntryAnswer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/dto/RawStorageEntryPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/skilkihodin/jhauzzer/api/RawStorageEntryPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/dto/RawWarehouseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/skilkihodin/jhauzzer/api/RawWarehouseData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719826265204</updated>
-      <workItem from="1719826269555" duration="6100000" />
+      <workItem from="1719826269555" duration="6292000" />
     </task>
     <servers />
   </component>
