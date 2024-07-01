@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.model.warehouses;
 
 
-import com.skilkihodin.jhauzzer.dto.RawWarehouseData;
+import com.skilkihodin.jhauzzer.api.RawWarehouseData;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,8 +1,8 @@
 package com.skilkihodin.jhauzzer.service;
 
+import com.skilkihodin.jhauzzer.api.RawLoginData;
 import com.skilkihodin.jhauzzer.controller.repo.AccountsRepo;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
-import com.skilkihodin.jhauzzer.dto.RawLoginData;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.Contract;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +16,15 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public final class AccountsService implements UserDetailsService {
 
-    @Autowired
     private AccountsRepo repository;
+
+    @Autowired
+    public AccountsService(AccountsRepo accountsRepo) {
+        repository = accountsRepo;
+    }
+
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

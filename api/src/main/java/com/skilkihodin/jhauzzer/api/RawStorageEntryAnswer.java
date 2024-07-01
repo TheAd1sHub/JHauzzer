@@ -1,4 +1,4 @@
-package com.skilkihodin.jhauzzer.dto;
+package com.skilkihodin.jhauzzer.api;
 
 import lombok.Data;
 

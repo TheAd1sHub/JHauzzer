@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="newDTOs">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/newDTOs.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

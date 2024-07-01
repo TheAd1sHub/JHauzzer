@@ -3,6 +3,7 @@ import java.nio.file.Files
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+
 plugins {
 	java
 	id("org.springframework.boot") version "3.3.0"
@@ -28,18 +29,24 @@ repositories {
 }
 
 
-//sourceSets {
-//	create("dto") {
-//		java {
-//			srcDir("src/main/java/")
-//			include("com/skilkihodin/jhauzzer/dto/**/*.java")
-//		}
-//
-//		tasks.jar {
-//			archiveFileName.set("$buildName-dto.jar")
-//		}
-//	}
-//}
+sourceSets {
+	create("dto") {
+		java {
+			srcDir("src/main/java/")
+			include("com/skilkihodin/jhauzzer/dto/**/*.java")
+		}
+
+		tasks.jar {
+			archiveFileName.set("$buildName-dto.jar")
+		}
+
+		dependencies {
+			compileOnly("org.projectlombok:lombok:1.18.30")
+			annotationProcessor("org.projectlombok:lombok:1.18.30")
+			implementation("org.projectlombok:lombok:1.18.30")
+		}
+	}
+}
 
 // val dtoSourceSet: SourceSet = sourceSets["dto"]
 
@@ -95,6 +102,8 @@ dependencies {
 	//"dtoCompile("org.projectlombok:lombok:1.18.30")
 	//"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
 	//"dtoImplementation"("org.projectlombok:lombok:1.18.30")
+	"dtoImplementation"("org.projectlombok:lombok:1.18.30")
+	"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
 
 
 	//implementation(dtoSourceSet.output)
@@ -107,7 +116,6 @@ tasks.withType<Test> {
 }
 
 tasks.withType<Jar>() {
-
 	duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
 	manifest {
@@ -117,6 +125,8 @@ tasks.withType<Jar>() {
 	configurations["compileClasspath"].forEach { file: File ->
 		from(zipTree(file.absoluteFile))
 	}
+
+	archiveFileName.set("$buildName.jar")
 }
 
 //#region BUILD FILE NAME GENERATION & ASSIGNMENT
@@ -142,86 +152,87 @@ val buildName: String = generateBuildName()
 val dtosBuildName: String = "$buildName-dto"
 
 
-//distributions {
-//	main {
-//		distributionBaseName = buildName
-//		contents {
-//			from("src/main/java")
-//		}
-//
-//	}
-//
-//	create("dto") {
-//		distributionBaseName = dtosBuildName
-//
-//		contents {
-//			from("src/main/java/com/skilkihodin/jhauzzer/dto")
-//		}
-//	}
-//}
+distributions {
+	main {
+		distributionBaseName = buildName
+		contents {
+			from("src/main/java")
+		}
 
+	}
 
-val mainBuildJar: Jar by tasks.creating(Jar::class) {
-	archiveBaseName.set(buildName)
-	archiveFileName.set("$buildName.jar")
-	from(sourceSets["main"].output)
+	create("dto") {
+		distributionBaseName = dtosBuildName
 
-	doNotTrackState("Cuz I said so")
-}
-
-val dtoBuildJar: Jar by tasks.creating(Jar::class) {
-	archiveBaseName.set(dtosBuildName)
-	archiveFileName.set("$dtosBuildName.jar")
-
-	val dtoClasses: CopySpec = copySpec {
-		from(sourceSets["main"].output) {
-			include("com/skilkihodin/jhauzzer/dto/**/*.class")
+		contents {
+			from("src/main/java/com/skilkihodin/jhauzzer/dto")
 		}
 	}
-	//from({
-	//	sourceSets["main"].output.classesDirs.asFileTree.matching {
-	//		include("com/skilkihodin/jhauzzer/dto/**/*.class")
-	//	}
-	//})
-
-	for (f in Files.walk(fileTree(dtoClasses as CopySpecInternal))) {
-		println(f.path)
-	}
-
-	//from(fileTree(dtoClasses as CopySpecInternal).matching {
-	//	include("**/*.class")
-	//})
-	with(dtoClasses)
-
-
-
-	doNotTrackState("Cuz I said so")
-	dependsOn(tasks["compileJava"])
-	dependsOn(tasks["compileKotlin"])
-	dependsOn(tasks["processResources"])
-}
-
-tasks.assemble {
-	dependsOn(mainBuildJar, dtoBuildJar)
 }
 
 
-
-
-val buildDirectory = "${layout.buildDirectory.get()}\\libs"
-mainBuildJar.destinationDirectory.set(file(buildDirectory))
-dtoBuildJar.destinationDirectory.set(file(buildDirectory))
-
-//tasks.jar {
-//
+//val mainBuildJar: Jar by tasks.creating(Jar::class) {
+//	archiveBaseName.set(buildName)
 //	archiveFileName.set("$buildName.jar")
+//	from(sourceSets["main"].output)
+//
+//	doNotTrackState("Cuz I said so")
+//}
+//
+//val dtoBuildJar: Jar by tasks.creating(Jar::class) {
+//	archiveBaseName.set(dtosBuildName)
+//	archiveFileName.set("$dtosBuildName.jar")
+//
+//	val dtoClasses: CopySpec = copySpec {
+//		from(sourceSets["main"].getOutput()) {
+//			include("com/skilkihodin/jhauzzer/dto/**/*.class")
+//		}
+//	}
+//	//from({
+//	//	sourceSets["main"].output.classesDirs.asFileTree.matching {
+//	//		include("com/skilkihodin/jhauzzer/dto/**/*.class")
+//	//	}
+//	//})
+//
+//	//dtoClasses.eachFile(Delegate.closureOf<FileCopyDetails> {
+//	//	println(this.path)
+//	//})
+//
+//
+//	//from(fileTree(dtoClasses as CopySpecInternal).matching {
+//	//	include("**/*.class")
+//	//})
+//	with(dtoClasses)
+//
+//
+//
+//	doNotTrackState("Cuz I said so")
+//	dependsOn(tasks["compileJava"])
+//	dependsOn(tasks["compileKotlin"])
+//	dependsOn(tasks["processResources"])
+//}
+//
+//tasks.assemble {
+//	dependsOn(mainBuildJar, dtoBuildJar)
 //}
 
-//val makeDtoJar by tasks.creating(Jar::class) {
-//	archiveClassifier.set("dto")
-//	from(sourceSets["dto"].output)
-//	dependsOn(tasks["classes"])  // Ensure main classes are compiled first
-//}
 
-//tasks["assemble"].dependsOn(makeDtoJar)
+
+
+//val buildDirectory = "${layout.buildDirectory.get()}\\libs"
+//mainBuildJar.destinationDirectory.set(file(buildDirectory))
+//dtoBuildJar.destinationDirectory.set(file(buildDirectory))
+
+tasks.jar {
+
+	archiveFileName.set("$buildName.jar")
+}
+
+val makeDtoJar by tasks.creating(Jar::class) {
+	archiveClassifier.set("dto")
+	from(sourceSets["dto"].output)
+	dependsOn(tasks["classes"])
+}
+
+tasks["assemble"].dependsOn(makeDtoJar)
 //#endregion

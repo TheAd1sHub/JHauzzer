@@ -1,6 +1,6 @@
 package com.skilkihodin.jhauzzer.model.accounts;
 
-import com.skilkihodin.jhauzzer.dto.RawLoginData;
+import com.skilkihodin.jhauzzer.api.RawLoginData;
 import com.skilkihodin.jhauzzer.security.Encryptor;
 import jakarta.persistence.*;
 import lombok.Getter;

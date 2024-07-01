@@ -1,7 +1,7 @@
 package com.skilkihodin.jhauzzer.model.warehouses;
 
-import com.skilkihodin.jhauzzer.dto.RawStorageEntryAnswer;
-import com.skilkihodin.jhauzzer.dto.RawStorageEntryPost;
+import com.skilkihodin.jhauzzer.api.RawStorageEntryAnswer;
+import com.skilkihodin.jhauzzer.api.RawStorageEntryPost;
 import com.skilkihodin.jhauzzer.model.accounts.Account;
 import jakarta.persistence.*;
 import lombok.Getter;
