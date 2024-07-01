@@ -5,8 +5,79 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce6c319e-ef72-4883-bafc-20a6dec18739" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/api/blld.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/JHauzzerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/JHauzzerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/config/RestaurantProductMappingConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/config/RestaurantProductMappingConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/config/RolesConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/config/RolesConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/api/AccountsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/AuthApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/api/AuthApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/api/ProductsApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/ServerDropApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/api/ServerDropApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/api/WarehousesApiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/gui/AccountsGuiController.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/gui/AccountsGuiController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/repo/AccountsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/repo/AccountsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/repo/ProductsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/repo/ProductsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/controller/repo/WarehousesRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/controller/repo/WarehousesRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/dto/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/dto/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/DataNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/exceptions/DataNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientFundsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientFundsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientGoodsException.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/InsufficientGoodsException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/PurchaseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/PurchaseException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/TransactionFailedException.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/exceptions/purchase/TransactionFailedException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/misc/CatFact.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/misc/CatFact.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/misc/printers/CatFactPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/misc/printers/CatFactPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/misc/printers/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/misc/printers/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/misc/printers/RestaurantProductPrinter.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/misc/printers/RestaurantProductPrinter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/accounts/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/GoodsFilterDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/GoodsFilterDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductGroup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/ProductQuality.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/StorageEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/model/warehouses/Warehouse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/security/Crc32HashGenerator.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/security/Crc32HashGenerator.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/security/Crc32SaltyHashGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/security/Crc32SaltyHashGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/security/Encryptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/security/Encryptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/security/HashGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/security/HashGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/security/SaltyHashGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/security/SaltyHashGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/AccountsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/DatabaseRecordsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/DatabaseRecordsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ExpiredProductsDisposeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/ExpiredProductsDisposeService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/HotOffersService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/HotOffersService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/ProductsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/RestaurantsRefillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/RestaurantsRefillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesRefillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesRefillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/com/skilkihodin/jhauzzer/service/WarehousesService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/main-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/main-changelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v1/v1-changelog.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v1/v1-changelog.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v2/V2-2-change-warehouses-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v2/V2-2-change-warehouses-table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v2/v2-1-change-stored-products-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v2/v2-1-change-stored-products-table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v2/v2-full-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v2/v2-full-changelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-1-change-accounts-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-1-change-accounts-table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-2-change-warehouses-table.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-2-change-warehouses-table.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-3-redo-accounts-table-from-scratch.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-3-redo-accounts-table-from-scratch.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-4-change-accounts-table-auto-increment-id.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-4-change-accounts-table-auto-increment-id.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-5-change-stored-products-table-add-validity-period.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-5-change-stored-products-table-add-validity-period.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-6-change-stored-products-table-remove-legacy-column.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-6-change-stored-products-table-remove-legacy-column.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-7-change-stored-products-table-update-type-column.sql" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-7-change-stored-products-table-update-type-column.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/db/changelog/v3/v3-full-changelog.xml" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/db/changelog/v3/v3-full-changelog.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/public/error/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/public/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/static/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user-search-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/main/resources/templates/user-search-page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/skilkihodin/jhauzzer/JHauzzerApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/java/com/skilkihodin/jhauzzer/JHauzzerApplicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/skilkihodin/jhauzzer/security/Crc32GeneratorHackTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/java/com/skilkihodin/jhauzzer/security/Crc32GeneratorHackTest.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/skilkihodin/jhauzzer/security/Crc32SaltyHashGeneratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/main/src/test/java/com/skilkihodin/jhauzzer/security/Crc32SaltyHashGeneratorTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,35 +103,65 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature/add-spring-security",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.16796875",
-    "project.structure.side.proportion": "0.24347825",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.jhauzzer [:assemble].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/add-spring-security&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.16796875&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.24347825&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\yusere\\.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;C:\\Users\\yusere\\.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\main" />
       <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\api\src\main\java" />
       <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\api\src\main" />
       <recent name="C:\Users\yusere\IdeaProjects\jhauzzer\src\main\java" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradlew :assemble" />
+      <command value="snapcraft help gradle" />
+    </option>
+  </component>
+  <component name="RunManager" selected="Gradle.jhauzzer [:assemble]">
+    <configuration name="jhauzzer [:assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
     <configuration name="JHauzzerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="jhauzzer.main" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.skilkihodin.jhauzzer.JHauzzerApplication" />
@@ -68,16 +169,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="lua.app" factoryName="Lua Application">
-      <option name="program" value="lua.exe" />
-      <option name="file" value="" />
-      <option name="workingDir" value="$PROJECT_DIR$/src/dto/java" />
-      <option name="debuggerType" value="1" />
-      <option name="params" value="" />
-      <option name="charset" value="UTF-8" />
-      <option name="showConsole" value="true" />
-      <method v="2" />
-    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.jhauzzer [:assemble]" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -95,7 +191,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719826265204</updated>
-      <workItem from="1719826269555" duration="6292000" />
+      <workItem from="1719826269555" duration="8848000" />
+      <workItem from="1719839631572" duration="5780000" />
     </task>
     <servers />
   </component>

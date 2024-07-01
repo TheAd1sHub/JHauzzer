@@ -6,3 +6,4 @@ pluginManagement {
 rootProject.name = "jhauzzer"
 include("dto")
 include("api")
+include("main")

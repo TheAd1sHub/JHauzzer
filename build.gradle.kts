@@ -29,24 +29,24 @@ repositories {
 }
 
 
-sourceSets {
-	create("dto") {
-		java {
-			srcDir("src/main/java/")
-			include("com/skilkihodin/jhauzzer/dto/**/*.java")
-		}
-
-		tasks.jar {
-			archiveFileName.set("$buildName-dto.jar")
-		}
-
-		dependencies {
-			compileOnly("org.projectlombok:lombok:1.18.30")
-			annotationProcessor("org.projectlombok:lombok:1.18.30")
-			implementation("org.projectlombok:lombok:1.18.30")
-		}
-	}
-}
+//sourceSets {
+//	create("dto") {
+//		java {
+//			srcDir("src/main/java/")
+//			include("com/skilkihodin/jhauzzer/dto/**/*.java")
+//		}
+//
+//		tasks.jar {
+//			archiveFileName.set("$buildName-dto.jar")
+//		}
+//
+//		dependencies {
+//			compileOnly("org.projectlombok:lombok:1.18.30")
+//			annotationProcessor("org.projectlombok:lombok:1.18.30")
+//			implementation("org.projectlombok:lombok:1.18.30")
+//		}
+//	}
+//}
 
 // val dtoSourceSet: SourceSet = sourceSets["dto"]
 
@@ -99,11 +99,8 @@ dependencies {
 	//add("dtoAnnotationProcessor", "org.projectlombok:lombok:1.18.30")
 	//add("dtoImplementation", "org.projectlombok:lombok:1.18.30")
 
-	//"dtoCompile("org.projectlombok:lombok:1.18.30")
-	//"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
 	//"dtoImplementation"("org.projectlombok:lombok:1.18.30")
-	"dtoImplementation"("org.projectlombok:lombok:1.18.30")
-	"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
+	//"dtoAnnotationProcessor"("org.projectlombok:lombok:1.18.30")
 
 
 	//implementation(dtoSourceSet.output)
@@ -170,6 +167,80 @@ distributions {
 	}
 }
 
+subprojects {
+	version = this.version
+
+	val resultingFileName: String
+	if (project.name.contains("main")) {
+		resultingFileName = buildName
+
+		dependencies {
+			// External libs
+			implementation(fileTree(mapOf("dir" to "lib", "include" to listOf("*.jar"))))
+
+			// Databases
+			implementation("com.mysql:mysql-connector-j:8.3.0")
+			implementation("org.liquibase:liquibase-core")
+
+			// Spring boot starter
+			implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+			implementation("org.springframework.boot:spring-boot-starter-jdbc")
+			implementation("org.springframework.boot:spring-boot-starter-web")
+			implementation("org.springframework.boot:spring-boot-starter-thymeleaf:3.3.0")
+
+			// implementation("org.springframework.boot:spring-boot-starter-security") // THE ONES BELOW ARE USED INSTEAD
+			implementation("org.springframework.security:spring-security-core:6.3.0")
+			implementation("org.springframework.security:spring-security-config:6.3.0")
+			implementation("org.springframework.security:spring-security-web:6.3.0")
+			testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+			// Testing
+			testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+			implementation(kotlin("stdlib-jdk8"))
+			implementation("io.projectreactor.ipc:reactor-netty:0.7.15.RELEASE")
+			implementation("org.springframework.boot:spring-boot-starter-webflux:3.3.0")
+			implementation("org.modelmapper:modelmapper:3.2.0")
+
+		}
+
+	} else if (project.name.contains("api")) {
+		resultingFileName = dtosBuildName
+	} else {
+		resultingFileName = project.name
+	}
+
+
+	tasks.register<Jar>("jar") {
+		archiveFileName.set("$resultingFileName.jar")
+		archiveVersion.set(version.toString())
+	}
+
+	tasks.matching { it.name == "bootJar" }.configureEach {
+		enabled = false
+	}
+
+	tasks.getByName("jar") {
+		enabled = true
+	}
+}
+
+allprojects {
+	dependencies {
+		// JUnit
+		testImplementation(platform("org.junit:junit-bom:5.10.0"))
+		testImplementation("org.junit.jupiter:junit-jupiter")
+
+		// Lombok
+		compileOnly("org.projectlombok:lombok:1.18.30")
+		annotationProcessor("org.projectlombok:lombok:1.18.30")
+		implementation("org.projectlombok:lombok:1.18.30")
+	}
+
+	tasks.test {
+		useJUnitPlatform()
+	}
+}
+
 
 //val mainBuildJar: Jar by tasks.creating(Jar::class) {
 //	archiveBaseName.set(buildName)
@@ -223,16 +294,16 @@ distributions {
 //mainBuildJar.destinationDirectory.set(file(buildDirectory))
 //dtoBuildJar.destinationDirectory.set(file(buildDirectory))
 
-tasks.jar {
+// tasks.jar {
+//
+//	archiveFileName.set("$buildName.jar")
+//}
 
-	archiveFileName.set("$buildName.jar")
-}
+//val makeDtoJar by tasks.creating(Jar::class) {
+//	archiveClassifier.set("dto")
+//	from(sourceSets["dto"].output)
+//	dependsOn(tasks["classes"])
+//}
 
-val makeDtoJar by tasks.creating(Jar::class) {
-	archiveClassifier.set("dto")
-	from(sourceSets["dto"].output)
-	dependsOn(tasks["classes"])
-}
-
-tasks["assemble"].dependsOn(makeDtoJar)
+//tasks["assemble"].dependsOn(makeDtoJar)
 //#endregion

@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("java-library")
 }
 
 group = "com.skilkihodin"
@@ -20,4 +21,13 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+
+tasks.matching { it.name == "bootJar" }.configureEach {
+    enabled = false
+}
+
+tasks.getByName("jar") {
+    enabled = true
 }

@@ -9,10 +9,9 @@
         </processorPath>
         <module name="jhauzzer.main" />
         <module name="jhauzzer.api.main" />
+        <module name="com.skilkihodin.jhauzzer.dto" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="17">
-      <module name="com.skilkihodin.jhauzzer.dto" target="21" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="17" />
   </component>
 </project>
